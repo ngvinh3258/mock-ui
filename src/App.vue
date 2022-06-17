@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ContractForm :headerList="header" :heading="heading"
+      ><template slot="body">
+        <ContractView></ContractView>
+      </template>
+    </ContractForm>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ContractForm from "./components/ContractForm.vue";
+import ContractView from "./components/contractForm/ContractView.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    ContractForm,
+    ContractView,
+  },
+  data() {
+    return {
+      header: ["入社手続き", "ヘルプ"],
+      heading: "入社手続きの登録をお願いいたします",
+    };
+  },
+};
 </script>
 
 <style>
@@ -23,6 +34,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>
